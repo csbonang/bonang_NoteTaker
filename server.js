@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express(); 
-var PORT = 8080; 
+// var PORT = 8080; 
+// allows you to get the port from the bound environment variable (using process.env.PORT)
+var PORT = process.env.PORT || 3001;
 
 // data format for front-end and backend is JSON 
 // use for data transfer
