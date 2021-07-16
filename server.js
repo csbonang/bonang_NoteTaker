@@ -10,6 +10,10 @@ app.use(express.urlencoded({
 
 }))
 
+// we need the public folder to be accessible so we can find our css files 
+app.use(express.static('public')); 
+
+
 // require the routes
 // access to apiRoutes, passes app (aka express)server.js to that path 
 require('./routes/apiRoutes')(app)

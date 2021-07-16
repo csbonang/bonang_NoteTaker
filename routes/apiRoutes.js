@@ -93,17 +93,17 @@ API routes
         // stringify the id 
         // id.stringify(); 
         // new note received to save on the request body
-        const newNote = req.body;
+        // const newNote = req.body;
         // stringify the new note 
         // newNote = JSON.stringify([id, newNote]);
          let newNote = {
              id: Math.floor(Math.random()*100),
-             title: req.body.title,
-             text: req.body.text
+             title: request.body.title,
+             text: request.body.text
          }
          db.push(newNote)
         // new note will be written to db.json
-            fs.writeFileSync('../db/db.json',db, function(err){
+            fs.writeFileSync('./db/db.json',JSON.stringify(db), function(err){
                 if(err) console.log(err)
             })
             console.log("Post",db)
@@ -129,7 +129,7 @@ API routes
         // update the db 
         db = tempArray; 
         // new note will be written to db.json
-            fs.writeFileSync('../db/db.json',db, function(err){
+            fs.writeFileSync('./db/db.json',JSON.stringify(db), function(err){
                 if(err) console.log(err)
             })
             console.log("Delete Route",db)
