@@ -61,6 +61,8 @@ app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'add.html')));
 var fs = require('fs'); 
 // needed to generate a random id 
 const { v4: uuidv4 } = require('uuid');
+// database
+var db = require('../db/db.json'); 
 /*
 API routes 
 1. GET /api/notes should read the db.json file and return all saved notes as JSON.
@@ -76,27 +78,37 @@ API routes
     app.get('/api/notes', (request, response) =>
     {
                 // read from db.json
-                fetch('..db/db.json')
-                // maybe parse
-                .then(response => response.json())
-
-    
+                // parse the data 
+                db = JSON.parse(fs.readFileSync('./db/db.json', 'utf-8')); 
+                console.log('GET ROUTE: ', db); 
+                // displays it on the frontend 
+                response.json(db); 
     }); 
 
     // path: api/notes 
     app.post('/api/notes', (request, response) =>
     {
         // generates an id for the new note that will be added to the db 
-        var id = uuidv4();
+        // var id = uuidv4();
         // stringify the id 
-        id.stringify(); 
+        // id.stringify(); 
         // new note received to save on the request body
         const newNote = req.body;
         // stringify the new note 
-        newNote = JSON.stringify([id, newNote]); 
+        // newNote = JSON.stringify([id, newNote]);
+         let newNote = {
+             id: Math.floor(Math.random()*100),
+             title: req.body.title,
+             text: req.body.text
+         }
+         db.push(newNote)
         // new note will be written to db.json
-    fs.writeFileSync('../db/db.json', newNote); 
-    
+            fs.writeFileSync('../db/db.json',db, function(err){
+                if(err) console.log(err)
+            })
+            console.log("Post",db)
+            // send new array to frontend 
+            response.json(db)
     }); 
 
 
