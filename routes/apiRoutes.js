@@ -111,5 +111,32 @@ API routes
             response.json(db)
     }); 
 
+    // DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. In order to delete a note, you'll need to read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
+
+    // :id that is how you match a changing variable 
+    app.delete('/api/notes/:id', (request, response) =>
+    {
+
+        var tempArray = []; 
+        for(var i = 0; i < db.length; i++)
+        {
+            if(db[i].id != request.params.id)
+            {
+                tempArray.push(db[i]); 
+            }
+        }
+
+        // update the db 
+        db = tempArray; 
+        // new note will be written to db.json
+            fs.writeFileSync('../db/db.json',db, function(err){
+                if(err) console.log(err)
+            })
+            console.log("Delete Route",db)
+            // send new array to frontend 
+            response.json(db)
+    }); 
+
+
 
 }
