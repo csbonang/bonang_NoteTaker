@@ -15,6 +15,12 @@ app.use(express.urlencoded({
 // we need the public folder to be accessible so we can find our css files 
 app.use(express.static('public')); 
 
+//Ensure that you have at least one HTML page being served at the "/" route. Example:
+
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
+
 
 // require the routes
 // access to apiRoutes, passes app (aka express)server.js to that path 
