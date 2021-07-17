@@ -19,14 +19,17 @@ The note taker program allows the user to create, save, and delete notes. When t
 
 ## Screenshot 
 <b>Landing Page</b>
-![landing page](landingPg.png)
+![landing page](https://github.com/csbonang/bonang_NoteTaker/blob/main/landingPg.PNG)
 
 <b>Notes Page</b>
-![note page](notePg.png)
+![note page](https://github.com/csbonang/bonang_NoteTaker/blob/main/notePg.PNG)
 
 
 ## Link 
 <b>Link to deployed application</b>
+<b> Landing page</b> 
+https://secret-woodland-23419.herokuapp.com/
+<b> Notes </b> 
 https://secret-woodland-23419.herokuapp.com/notes
 
 
