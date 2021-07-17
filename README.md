@@ -28,7 +28,7 @@ The note taker program allows the user to create, save, and delete notes. When t
 ## Link 
 <b>Link to deployed application</b>
 <b> Landing page</b> 
-https://secret-woodland-23419.herokuapp.com/
+https://secret-woodland-23419.herokuapp.com/   <br> 
 <b> Notes </b> 
 https://secret-woodland-23419.herokuapp.com/notes
 
